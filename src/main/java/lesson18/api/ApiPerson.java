@@ -53,10 +53,9 @@ public class ApiPerson {
         HttpRequest req = HttpRequest.newBuilder().GET().uri(URI.create("https://randomuser.me/api")).build();
         for (int i = 0; i < count; i++) {
             String res = client.send(req, HttpResponse.BodyHandlers.ofString()).body();
+            country.add(parseApiResponseToPersonCountry(res));
 
-                country.add(parseApiResponseToPersonCountry(res));
-
-            }
+        }
 
         return country;
     }

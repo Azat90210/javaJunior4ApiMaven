@@ -8,12 +8,10 @@ public class Main {
         ArrayList<Person> person = null;
         ArrayList<Country> country = null;
         ArrayList<Country> country2 = null;
-        String countryTest = "Mexico";
         try {
             person = apiPerson.getPersonApiRequest(5);
-            country = apiPerson.getPersonCountryApiRequest(100);
+            country = apiPerson.getPersonCountryApiRequest(200);
 
-            System.out.println(country);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -26,12 +24,12 @@ public class Main {
 
         //PersonSort.filtrAge(person, person1 -> LocalDateTime.now().getYear() - person1.getDob().getYear() > 40);// лямбда выражение
 
-        /*CountrySort.filterCountry(country, new Proverka<Country>() {
+        CountrySort.filterCountry(country, new Proverka<Country>() {
             @Override
             public boolean test(Country country) {
                 boolean testCountry = country.getCountry().equals("Germany");
                 return testCountry;
             }
-        });*/
+        });
     }
 }

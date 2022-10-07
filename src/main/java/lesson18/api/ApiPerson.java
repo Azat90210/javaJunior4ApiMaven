@@ -51,25 +51,5 @@ public class ApiPerson {
         return people;
     }
 
-    /*public ArrayList<Country> getPersonCountryApiRequest(int count) throws IOException, InterruptedException {
-        ArrayList<Country> country = new ArrayList<>();
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest req = HttpRequest.newBuilder().GET().uri(URI.create("https://randomuser.me/api")).build();
-        for (int i = 0; i < count; i++) {
-            String res = client.send(req, HttpResponse.BodyHandlers.ofString()).body();
-            country.add(parseApiResponseToPersonCountry(res));
-
-        }
-
-        return country;
-    }
-
-    public Country parseApiResponseToPersonCountry(String res) {
-        Country country = new Country();
-        JSONObject fullData = new JSONObject(res);
-        JSONObject result = fullData.getJSONArray("results").getJSONObject(0);
-        country.setCountry(result.getJSONObject("location").getString("country"));
-        return country;
-    }*/
 }

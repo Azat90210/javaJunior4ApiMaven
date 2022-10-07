@@ -19,12 +19,6 @@ public class Main {
 
         PersonSort.filtrAge(person, person1 -> LocalDateTime.now().getYear() - person1.getDob().getYear() > 40);// лямбда выражение
 
-//        CountrySort.filterCountry(country, new Proverka<Country>() {
-//            @Override
-//            public boolean test(Country country) {
-//                boolean testCountry = country.getCountry().equals("Germany");
-//                return testCountry;
-//            }
-//        });
+
     }
 }

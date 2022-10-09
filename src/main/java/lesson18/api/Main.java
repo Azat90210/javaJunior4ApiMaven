@@ -8,17 +8,17 @@ public class Main {
         ApiPerson apiPerson = new ApiPerson();
         ArrayList<Person> person = null;
         ArrayList<Country> country = null;
-        ArrayList<Country> country2 = null;
+
         try {
             person = apiPerson.getPersonApiRequest(10);
-            //country = apiPerson.getPersonCountryApiRequest(200);
+            country = apiPerson.getCountryApiRequest(100, "Canada");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        PersonSort.filtrAge(person, person1 -> LocalDateTime.now().getYear() - person1.getDob().getYear() > 40);// лямбда выражение
+        //PersonSort.filtrAge(person, person1 -> LocalDateTime.now().getYear() - person1.getDob().getYear() > 40);// лямбда выражение
 
-
+        System.out.println(country);
     }
 }

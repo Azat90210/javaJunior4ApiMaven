@@ -51,33 +51,29 @@ public class ApiPerson {
     }
 
 
-    public ArrayList<Country> getCountryApiRequest(int count, String countryC) throws IOException, InterruptedException {
-        int a = 0;
-        ArrayList<Country> countryFind = new ArrayList<>();
+    public ArrayList<Country> getCountryApiRequest(int count, String countryName) throws IOException, InterruptedException {
+
+        Country c = new Country();
+        ArrayList<Country> country = new ArrayList<>();
+        ArrayList<Country> newCountry = new ArrayList<>();
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest req = HttpRequest.newBuilder().GET()
-                .uri(URI.create(String.format("https://randomuser.me/api?results=%d", count))).build();
-        String res = client.send(req, HttpResponse.BodyHandlers.ofString()).body();
+                .uri(URI.create("https://randomuser.me/api")).build();
 
-        if (res.equals(countryC)) {
-            System.out.println(parseApiResponseToCountry(res));
-        }
-
-        return parseApiResponseToCountry(res);
-    }
-
-    public ArrayList<Country> parseApiResponseToCountry(String res) {
-        ArrayList<Country> country = new ArrayList<>();
-
-        JSONObject fullData = new JSONObject(res);
-        int count = fullData.getJSONObject("info").getInt("results");
         for (int i = 0; i < count; i++) {
-            Country c = new Country();
-            JSONObject result = fullData.getJSONArray("results").getJSONObject(i);
-            c.setCountry(result.getJSONObject("location").getString("country"));
-            country.add(c);
+            String res = client.send(req, HttpResponse.BodyHandlers.ofString()).body();
+            country.add(parseApiResponseToCountry(res));
+
         }
         return country;
+    }
+
+    public Country parseApiResponseToCountry(String res) {
+        Country c = new Country();
+        JSONObject fullData = new JSONObject(res);
+        JSONObject result = fullData.getJSONArray("results").getJSONObject(0);
+        c.setCountry(result.getJSONObject("location").getString("country"));
+        return c;
     }
 }
 

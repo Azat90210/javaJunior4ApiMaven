@@ -11,14 +11,14 @@ public class Main {
 
         try {
             person = apiPerson.getPersonApiRequest(10);
-            country = apiPerson.getCountryApiRequest(100, "Canada");
+            country = apiPerson.getCountryApiRequest(10, "Canada");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         //PersonSort.filtrAge(person, person1 -> LocalDateTime.now().getYear() - person1.getDob().getYear() > 40);// лямбда выражение
-
         System.out.println(country);
+
     }
 }
